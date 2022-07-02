@@ -1,0 +1,35 @@
+<div class="content">
+    <h1>Target</h1>
+    <div class="select-target flexrow">
+        {{#each combatants as |combatant|}}
+        <img class="token-icon {{#if (eq combatant.id ../currentTarget)}}selected{{/if}}" src="{{combatant.token.data.img}}" title="{{combatant.name}}"
+            data-combatant-id="{{combatant.id}}" />
+        {{/each}}
+    </div>
+
+    <h1>Skill</h1>
+    <div class="select-skill flexcol">
+        {{#each skills as |skill|}}
+        <label class="skill-label flexrow">
+            <input type="radio" name="skills" value="{{skill.name}}" {{#if (eq skill.name ../currentSkill)}}checked="checked"{{/if}}>
+            <img class="skill-icon" src="{{skill.img}}" />
+            <span class="skill-label">{{skill.name}}</span>
+            <span class="skill-label">{{skill.type}}</span>
+            <span class="skill-label">{{skill.impact}}</span>
+            <span class="skill-label">{{skill.effect}}</span>
+        </label>
+        {{/each}}
+    </div>
+</div>
+
+<footer class="sheet-footer flexrow">
+    <button type="button" name="confirm">
+        <i class="fas fa-check"></i> Confirm
+    </button>
+    <button type="button" name="clear">
+        <i class="fas fa-sync-alt"></i> Clear Action
+    </button>
+    <button type="button" name="cancel">
+        <i class="fas fa-times"></i> Cancel
+    </button>
+</footer>

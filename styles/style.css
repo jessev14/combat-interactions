@@ -1,0 +1,81 @@
+#combat-interactions-select-action-panel div.content {
+    overflow-y: scroll;
+}
+
+#combat li.combatant .combat-interactions-select-action {
+    display: block;
+    width: 40px;
+    height: var(--sidebar-item-height);
+    background: url(../img/skills.png) no-repeat 50% 50%;
+    background-size: 32px;
+    margin: 0 0.5em;
+}
+
+#combat li.combatant .combat-interactions-select-action:hover {
+    background-image: url(../img/skills-highlight.png);
+}
+
+#combat li.combatant .combat-interactions-select-action.active {
+    background-image: url(../img/skills-active.png);
+}
+
+#combat-interactions-select-action-panel img.token-icon {
+    border: #00000000 5px solid;
+    max-width: 80px;
+    margin-right: 10px;
+    box-sizing: content-box;
+
+    cursor: pointer;
+}
+
+#combat-interactions-select-action-panel img.token-icon.selected {
+    border-color: #f70303bf;
+    border-radius: 20px;
+
+}
+
+#combat-interactions-select-action-panel label.skill-label {
+    margin-bottom: 5px;
+    position: relative;
+    font-size: x-large;
+
+    align-items: center;
+}
+
+#combat-interactions-select-action-panel img.skill-icon {
+    flex: 0;
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+}
+
+#combat-interactions-select-action-panel span.skill-label {
+    font-size: medium;
+}
+
+#combat-interactions-select-action-panel input {
+    flex: 0;
+    margin-top: -4px;
+    margin-right: 10px;
+}
+
+
+#combat-interactions-select-action-panel button {
+    background: rgba(0, 0, 0, 0.1);
+    border: 2px groove var(--color-border-light-highlight);
+}
+
+#combat-interactions-select-action-panel button:hover {
+    outline: none;
+    box-shadow: 0 0 5px var(--color-shadow-primary);
+}
+
+#combat-interactions-select-action-panel footer {
+    flex: 0;
+    height: 32px;
+}
+
+.combat-interactions-vs {
+    font-size: 1.125em;
+    font-weight: bold;
+}
