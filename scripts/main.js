@@ -352,9 +352,11 @@ async function resolutionPhase(combatID) {
         let content = `Targeting ${targetCombatant.name} <hr>`;
 
         // Create chat message for each target
+        const successCounter = {};
         for (const contest of contests) {
             const { skill } = contest;
             const attacker = combat.combatants.get(contest.combatantID);
+            if (!successCounter[attacker.id]) successCounter[attacker.id] = ``;
 
             const contestingSkills = contests.filter(c => c.skill.effect !== skill.effect).map(c => c.skill);
 
@@ -371,6 +373,8 @@ async function resolutionPhase(combatID) {
                 contestingSkills.forEach(s => {
                     const targetArray = typeFailMap[skill.type].includes(s.type) ? failures : successes;
                     targetArray.push(s);
+                    if (targetArray === successes) successCounter[attacker.id] += ` (S)`;
+                    else successCounter[attacker.id] += ` (F)`;
                 });
 
                 for (const failure of failures) {
@@ -392,7 +396,7 @@ async function resolutionPhase(combatID) {
             }
 
             content += `
-                ${attacker.name} | ${createSkillContent(contest.skill)}
+                ${attacker.name} | ${contest.skill.name}${successCounter[attacker.id]}
                 <hr>
             `;
         }
@@ -425,10 +429,6 @@ function getActorOwner(actorID) {
     }
 
     return game.users.find(u => u.isGM && u.active)?.id;
-}
-
-function createSkillContent(skill) {
-    return `${skill.name} - ${skill.type} (${impactMap[skill.type]}) [${skill.effect}]`;
 }
 
 async function updateResource(actor, resourceName, increase = true) {
