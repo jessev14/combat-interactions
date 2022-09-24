@@ -349,7 +349,7 @@ async function resolutionPhase(combatID) {
         const contests = targetCombatant.getFlag(moduleName, "contest");
         if (!contests) continue;
 
-        let content = `Targeting ${targetCombatant.name} <hr>`;
+        let content = `<b>Targeting ${targetCombatant.name} <hr></b>`;
 
         // Create chat message for each target
         const successCounter = {};
